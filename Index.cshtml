@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication2.Models.MS_TBL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.機体番号)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.機体名)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.登場作品)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.機体番号)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.機体名)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.登場作品)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
