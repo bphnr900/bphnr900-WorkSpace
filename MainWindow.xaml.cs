@@ -12,9 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
-namespace MyClock
+namespace Practice01
 {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
@@ -24,15 +23,6 @@ namespace MyClock
         public MainWindow()
         {
             InitializeComponent();
-
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Tick += timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Start();
-        }
-        void timer_Tick(object sender,EventArgs e)
-        {
-            this.textBlock1.Text = DateTime.Now.ToString("hh:mm:ss");
         }
     }
 }
