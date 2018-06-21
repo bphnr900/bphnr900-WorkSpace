@@ -11,25 +11,19 @@ namespace Practice01
 {
     public class Sample : BindableBase
     {
-        public ObservableCollection<Person> people { get; set; }
         public DelegateCommand command { get; set; }
-
+        public DelegateCommand DeleteCommand { get; set; }
         public ObservableCollection<Task> tasks { get; set; }
 
         public Sample()
         {
-            people = new ObservableCollection<Person>
-            {
-                new Person{Name = "tiger",Age = 20, gender= Person.Gender.Men},
-                new Person{Name = "scott",Age = 25,gender = Person.Gender.Women}
-            };
-
             tasks = new ObservableCollection<Task>
             {
                 new Task{isCheck = false,StartTime=DateTime.Now.ToString("HH:mm")}
             };
 
             this.command = new DelegateCommand(this.execute, this.canexecute);
+            this.DeleteCommand = new DelegateCommand(this.DeleteExecute, this.CanDeleteExecute);
         }
 
         public void execute()
@@ -41,10 +35,30 @@ namespace Practice01
                 new Task { isCheck=false, StartTime=DateTime.Now.ToString("HH:mm") }
             );
         }
-
         public bool canexecute()
         {
             return true;
+        }
+        public void DeleteExecute()
+        {
+            for (int i = tasks.Count - 1; i >= 0; i--)
+            {
+                if (tasks[i].isCheck == true)
+                {
+                    tasks.RemoveAt(i);
+                }
+            }
+        }
+        public bool CanDeleteExecute()
+        {
+            for (int i = tasks.Count - 1; i >= 0; i--)
+            {
+                if (tasks[i].isCheck == true)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
     }

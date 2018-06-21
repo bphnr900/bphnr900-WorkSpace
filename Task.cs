@@ -18,6 +18,12 @@ namespace Practice01
             get { return endTime; }
             set { this.SetProperty(ref this.endTime, value); }
         }
-        public TimeSpan ManHour { get; set; }
+
+        private TimeSpan manHour;
+        public TimeSpan ManHour
+        {
+            get { return manHour; }
+            set { this.SetProperty(ref this.manHour, value); }
+        }
     }
 }
